@@ -1,0 +1,108 @@
+﻿<Window x:Class="Task1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task1"
+        mc:Ignorable="d"
+        Title="Task 1" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="5" FontFamily="Times New Roman" Foreground="Black" FontSize="14">Идентификаторы строк:</TextBlock>
+        <TextBlock Margin="5" Grid.Column="4" Width="100"></TextBlock>
+        <TextBox Grid.Column="1" Name="textBoxQuery" Height="25" FontFamily="Times New Roman" FontSize="14" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"/>
+        <Button Name="btnCount" Width="100" Margin="5 0" Grid.Column="2" Click="btnCount_Click" FontFamily="Times New Roman" Foreground="Black" FontSize="14">Подсчитать</Button>
+
+        <!--<FlowDocumentReader x:Name="tableView" UseLayoutRounding="True" SnapsToDevicePixels="True" Grid.Row="1" Grid.ColumnSpan="4" IsFindEnabled="False" IsScrollViewEnabled="False" Focusable="False" AutomationProperties.IsColumnHeader="True" IsPrintEnabled="False" BorderBrush="Black" BorderThickness="2,2,2,2" Visibility="Visible">
+            <FlowDocumentReader.Resources>
+                <Style TargetType="TableCell">
+                    <Setter Property="TextAlignment" Value="Center"/>
+                </Style>
+            </FlowDocumentReader.Resources>
+            <FlowDocument>
+                <Table CellSpacing="0">
+                    <Table.Columns>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell ColumnSpan="2" BorderThickness="0,0,0,0">
+                                <Paragraph FontWeight="Bold">Текст</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="0,0,0,0">
+                                <Paragraph FontWeight="Bold">Количество слов</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="0,0,0,0">
+                                <Paragraph FontWeight="Bold">Количество гласных</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell DataContext="{Binding ResulBuilder.Text}" ColumnSpan="2" BorderThickness="0,0,0,0">
+                                <Paragraph TextAlignment="Left" >Текст</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="0,0,0,0">
+                                <Paragraph FontWeight="Bold">Количество слов</Paragraph>
+                            </TableCell>
+                            <TableCell BorderBrush="Black" BorderThickness="0,0,0,0">
+                                <Paragraph FontWeight="Bold">Количество гласных</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentReader>-->
+
+
+
+
+        <ListView Name="listViewResult" Grid.Row="1" Grid.ColumnSpan="4" Width="Auto" Margin="0 5 0 0" BorderBrush="Black" FontWeight="Bold" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" FontSize="14" FontFamily="Times New Roman" BorderThickness="2,2,2,2" IsTextSearchEnabled="False" Focusable="False">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="TextBlock.FontFamily" Value="Times New Roman"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Текст" Width="550">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Text}" Margin="0 10 30 0" TextWrapping="Wrap" Foreground="Black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Количество слов" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding WordCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Количество гласных" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VowelCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
